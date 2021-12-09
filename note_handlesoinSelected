@@ -1,0 +1,72 @@
+    const handleCoinSelected = (e:any) =>{
+        const coin = e.target.value;
+        const selected = e.target.checked;
+
+        if(selected===true){
+            if(coinCount===8){
+                setSearchPlaceholder('✅ Eight coins already selected!');
+                return
+            } else {
+                setSearchPlaceholder('🙋‍♂️ Select eight coins you want to follow')
+                let repeated:boolean=false;
+                selectedCoins.forEach((previousCoin)=>{
+                    if(previousCoin===coin){
+                        setSearchPlaceholder(`🤷‍♂️${coin} already added!`);
+                        repeated = true;
+                        return
+                    }else{repeated=false}
+                })
+                if(repeated){
+                    return
+                } else {
+                    setCoinCount(prevNumber=>prevNumber+1)
+                    setSelectedCoins((prevState: any)=>[...prevState,coin])
+                }
+            }
+        } else {
+            const filteredCoins = selectedCoins.filter((selectedCoin)=>{
+                return !(coin===selectedCoin);
+            })
+            setSelectedCoins(filteredCoins);
+            setCoinCount(prevNumber=>prevNumber-1)
+            setSearchPlaceholder('🙋‍♂️ Select eight coins you want to follow')
+        }  
+    }
+
+
+
+    //////////////////////////////////////////////
+
+            const coin = e.target.value;
+        const selected = e.target.checked;
+        
+        if(selected===true){
+            if(coinCount===8){
+                setSearchPlaceholder('✅ Eight coins already selected!');
+                return
+            } else {
+                setSearchPlaceholder(`🙋‍♂️ you have selected ${coinCount} coins`)
+                let repeated:boolean=false;
+                selectedCoins.forEach((previousCoin)=>{
+                    if(previousCoin===coin){
+                        setSearchPlaceholder(`🤷‍♂️${coin} already added!`);
+                        repeated = true;
+                        return
+                    }else{repeated=false}
+                })
+                if(repeated){
+                    return
+                } else {
+                    setCoinCount(prevNumber=>prevNumber+1)
+                    setSelectedCoins((prevState: any)=>[...prevState,coin])
+                }
+            }
+        } else {
+            const filteredCoins = selectedCoins.filter((selectedCoin)=>{
+                return !(coin===selectedCoin);
+            })
+            setSelectedCoins(filteredCoins);
+            setCoinCount(prevNumber=>prevNumber-1)
+            setSearchPlaceholder(`🙋‍♂️ you have selected ${coinCount} coins`)
+        }  
+    }

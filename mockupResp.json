@@ -1,0 +1,12 @@
+{
+  "data": {
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjp7ImVtYWlsIjoiYXNkYXNkIiwiaWQiOiI2MWFlNDRjZjA1YzAyOWY1ZTQ0MTA0MmIifSwiZXhwIjoxNjM4ODk3MjkyfQ.BNNZKearYqU8htj5Wozv5p6uM-qUdSawRt4iW_kgYg4",
+    "user": {
+      "_id": "61ae44cf05c029f5e441042b",
+      "created": "Mon, 06 Dec 2021 17:13:51 GMT",
+      "email": "asdasd"
+    }
+  },
+  "message": "user authenticated",
+  "status": "successful"
+}
