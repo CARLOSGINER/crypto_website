@@ -27,13 +27,13 @@ export default function CoinCards({coins,selectedCoins}:{coins:any,selectedCoins
     
     return (
       <>
+        <h3 className="Dashboard_subtitle">My Dashboard</h3>    
         <div className="coinCards">
           <div className="section_our_solution">
             <div className="row">
               <div className="col-lg-12 col-md-12 col-sm-12">
                 <div className="our_solution_category">
                   <div className="solution_cards_box">
-
                     {selectedCoinsData.map((each=>(
                         <div className="solution_card">
                             <div className="hover_color_bubble"></div>

@@ -151,6 +151,10 @@
     object-fit: contain;
   }
 
+  .solution_card {
+    min-width:200px ;
+  }
+
   /*start media query*/
   @media screen and (min-width: 320px) {
     .sol_card_top_3 {
@@ -160,11 +164,12 @@
 
     .our_solution_category {
       width: 100%;
-      margin: 0 auto;
+      /* margin: 0 auto; */
     }
 
     .our_solution_category .solution_cards_box {
-      flex: auto;
+      flex-direction: row;
+      margin-top: 2em;
     }
   }
   @media only screen and (min-width: 768px) {
@@ -179,6 +184,16 @@
     }
     .our_solution_category {
       width: 50%;
-      margin: 0 auto;
+      /* margin: 0 auto; */
     }
   }
+
+
+.container{
+  margin:0;
+}
+
+.Dashboard_subtitle{
+  margin-top: 1em;
+  margin-left: 1em;
+}
