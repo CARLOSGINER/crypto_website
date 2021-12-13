@@ -21,7 +21,9 @@ ________________________________________________________________________________
 
 > Login con autentificación de usuario desde API del servidor. 
 > Funcionalidad de busqueda y agregar 8 cryptos operando sin bugs.
-> Pendientes agregar botón de finish para cargar dashboard.
+
+> Pendientes agregar slider con libreria react slick
+> Perndiente bug estados cuando se filtran coins se seleccionan otros.
 
 
 __________________________________________________________________________________________________________________________________________________________________________________
