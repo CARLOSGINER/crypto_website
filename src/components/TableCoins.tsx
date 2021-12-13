@@ -1,8 +1,9 @@
 import CoinRow from "./CoinRow"
 import {useEffect, useState} from 'react';
+import TCstyle from '../styles/tableCoins.module.css';
 
-function TableCoins({coins,search,setSearchPlaceholder,setSelectedCoins,selectedCoins}:
-{selectedCoins:string[],coins:any,search:string,setSearchPlaceholder:any,setSelectedCoins:any}) {
+function TableCoins({coins,search,setSearchPlaceholder,setSelectedCoins,selectedCoins,hideDashboard}:
+{selectedCoins:string[],coins:any,search:string,setSearchPlaceholder:any,setSelectedCoins:any,hideDashboard:any}) {
 
  
 
@@ -65,26 +66,34 @@ function TableCoins({coins,search,setSearchPlaceholder,setSelectedCoins,selected
     }
 
 
+
+
     //Other values for render
 
     const titles:string[] = ['#','Coin','Price', 'Price Change','24h Volume','Select'];
 
 
     return (
-      <table className="table table-light  table-hover">
-          <thead>
-              <tr>
-                {titles.map((title:string)=>(
-                    <td key={title}>{title}</td>
-                ))}
-              </tr>
-          </thead>
-          <tbody>
-              {tableFilteredCoins.map((coin:any,index:number) => (
-                  <CoinRow onClick={handleCoinSelected} coin={coin} key={index} index={index}/>
-              ))}
-          </tbody>
-      </table>
+      <>
+             {stopAddingCoins && <button onClick={hideDashboard} className={TCstyle["button-dashboard"]}>Go to Dashboard</button>}  
+
+            <table className="table table-light  table-hover">
+                <thead>
+                    <tr>
+                        {titles.map((title:string)=>(
+                            <td key={title}>{title}</td>
+                        ))}
+                    </tr>
+                </thead>
+                <tbody>
+                    {tableFilteredCoins.map((coin:any,index:number) => (
+                        <CoinRow onClick={handleCoinSelected} coin={coin} key={index} index={index}/>
+                    ))}
+                </tbody>
+            </table>
+    
+
+      </>  
     )
 }
 

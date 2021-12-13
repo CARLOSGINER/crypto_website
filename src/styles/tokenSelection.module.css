@@ -23,6 +23,8 @@
   span {
     animation: 1.5s infinite normal terminal;
   }
+
+
   
   ::-moz-selection {
     background: #7021d2;

@@ -1,0 +1,15 @@
+.button-dashboard{
+    border:none;
+    background-color: rgb(64, 56, 82);
+    color:#fff;
+    padding:0.5em;
+    transition: all 0.5s ease;
+    position: absolute;
+    right: 2em;
+    top: 2em;
+    border-radius: 1em;
+}
+
+.button-dashboard:hover {
+    background-color: rgb(95, 82, 124);
+}
