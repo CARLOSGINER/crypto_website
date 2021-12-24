@@ -2,22 +2,20 @@ import {useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import login from '../styles/login.module.css';
 
-export default function Login() {
+export default function Login({getID,getToken,getFirstTimeUser,getDataBaseCoins}:{getID:any,getToken:any,getFirstTimeUser:any,getDataBaseCoins:any}) {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [newUser, setNewUser] = useState(false);
     const [error, setError] = useState(false);
     const [subtitle, setSubtitle] = useState('Welcome!');
-    // const [token,setToken] = useState(''); 
-    // const [id, setId] = useState('');
     const [authorized, setAuthorized] = useState(false);
 
     let navigate = useNavigate();
 
     useEffect(() => {
         if(authorized){
-            navigate("/TokenSelection")
+            navigate("/dashboard")
         }
     }, [authorized,navigate])
 
@@ -57,18 +55,46 @@ export default function Login() {
 
             response.json()
             .then(body=>{
-                // setToken(body.data.token);
-                // setId(body.data.user._id);
+                const userToken = body.data.token;
+                const userId = body.data.user._id;
+                getID(userId);
+                getToken(userToken)
                 setSubtitle("Welcome back, come on in!")
-                // setTimeout(()=>{setAuthorized(true);},2000)
-                setAuthorized(true);
+
+                console.log(`from login, token: ${userToken}`);
+                console.log(`from login, userId: ${userId}`);
+
+                fetch(`https://todgerapp.herokuapp.com/getone/${userId}`,{
+                    method:'GET',  
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                        'Authorization':userToken
+                    }
+                })
+                .then(resp=>resp.json())
+
+                //si data:null entonces usuarioNuevo=true , enviar a Dashboard, para primer logout. [[chek]]
+                //TO DO: obtener coins seleccionadas en data, y usar setSelectedCoins ,console para probar [[chek]]
+                .then((body)=>{
+                    if(body.data===null){
+                        getFirstTimeUser(true)
+                        console.log(`new user detected`)
+                    } else if (body.data!==null){
+                        getDataBaseCoins(body.data.coins)
+                        getFirstTimeUser(false)
+                    }
+                })
+                setTimeout(()=>{setAuthorized(true);},1000)
             })
+
+            
         })
 
     }
-     
+
     const handleSignUp =  (event:any) => {
-        
+
             fetch('https://todgerapp.herokuapp.com/signup', {
                 method:'POST',
                 headers: {
@@ -79,7 +105,7 @@ export default function Login() {
                     email:email,
                     password:password
                 }),
-    
+
             })
             .then((response)=>{
                     response.json()
@@ -88,20 +114,18 @@ export default function Login() {
                             setSubtitle('Email already exists!')
                             setError(false);
                         }else if(body.message=== "user created successfully"){
-                            setSubtitle('Successfully signed up!')
+                            setSubtitle('Success! Now Login')
                             setError(false);
-                            setTimeout(()=>{setAuthorized(true);},2000)
-                            setAuthorized(true);
                         }else if(body.message==="Password must be non-empty."){
                             setSubtitle('❌ Password is empty!')
                             setError(true);
                         }
                     })
-                    
+
             })
-           
+
     }
- 
+
     const handleSignUp_anchor = (event:any) => {
         setNewUser(true);
     }

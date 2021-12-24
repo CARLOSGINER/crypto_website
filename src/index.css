@@ -1,7 +1,9 @@
 #root,body{
-    background-color: #ffffff;
+    background-color: #f1eded;
     color:rgb(0, 0, 0);
 }
+
+
 
 /* CARDS COINS */
 
@@ -25,8 +27,10 @@
   }
   .our_solution_category .solution_cards_box {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    flex-wrap: wrap;
+
   }
   .solution_cards_box .solution_card {
     flex: 0 50%;
@@ -39,7 +43,8 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
-    min-height: 265px;
+    min-height: 219px;
+    max-width: 250px;
     transition: 0.7s;
   }
 
@@ -77,12 +82,11 @@
     color: #309df0;
   }
 
-  .solution_card .so_top_icon {
-  }
+  
 
   .solution_card .solu_title h3 {
     color: #212121;
-    font-size: 1.3rem;
+    font-size: 1rem;
     margin-top: 13px;
     margin-bottom: 13px;
   }
@@ -112,9 +116,7 @@
     margin-bottom: 1rem;
     font-size: 2.5rem;
   }
-  .our_solution_content p {
-  }
-
+  
   .hover_color_bubble {
     position: absolute;
     background: rgb(54 81 207 / 15%);
@@ -170,11 +172,16 @@
     .our_solution_category .solution_cards_box {
       flex-direction: row;
       margin-top: 2em;
+      flex-wrap: wrap;
     }
   }
   @media only screen and (min-width: 768px) {
     .our_solution_category .solution_cards_box {
       flex: 1;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: start;
+      min-width: 80vw;
     }
   }
   @media only screen and (min-width: 1024px) {
@@ -182,18 +189,17 @@
       position: relative;
       top: -3rem;
     }
-    .our_solution_category {
-      width: 50%;
-      /* margin: 0 auto; */
-    }
+   
   }
 
 
 .container{
-  margin:0;
+  display:flex;
+  flex-direction: column;
 }
 
 .Dashboard_subtitle{
-  margin-top: 1em;
-  margin-left: 1em;
+  margin-top: 2em;
+  font-size: 1.5em;
+  color:rgb(112, 111, 111);
 }
