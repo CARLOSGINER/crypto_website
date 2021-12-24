@@ -16,13 +16,11 @@ ________________________________________________________________________________
 - [x] CSS modules / Bootstrap
 
 
-**ESTADO Y PENDIENTES**
+**PENDIENTES**
 
-> Login con autentificación de usuario desde API del servidor. 
-> Funcionalidad de busqueda y agregar 8 cryptos operando sin bugs.
+> CSS modificar tamaño de cartas coin.  
 
-> Pendientes agregar slider con libreria react slick
-> Perndiente bug estados cuando se filtran coins se seleccionan otros.
+> Hover de logOut.
 
 
 __________________________________________________________________________________________________________________________________________________________________________________
