@@ -153,7 +153,8 @@
   }
 
   .solution_card {
-    min-width:123px ;
+    width:7.6em;
+    min-width:114px ;
   }
 
   /*start media query*/
@@ -180,7 +181,7 @@
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: start;
-      min-width: 50vw;
+      max-width: 600px;
     }
   }
   @media only screen and (min-width: 1024px) {
@@ -195,6 +196,7 @@
 .container{
   display:flex;
   flex-direction: column;
+  min-width:90vw;
 }
 
 .Dashboard_subtitle{
