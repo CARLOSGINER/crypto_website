@@ -8,12 +8,11 @@
 /* CARDS COINS */
 
 .coinCards{
-
   transform: translateY(em);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
+  max-width: 50%;
 }
 
 .section_our_solution .row {
@@ -33,7 +32,7 @@
 
   }
   .solution_cards_box .solution_card {
-    flex: 0 50%;
+    /* flex: 0 50%; */
     background: #fff;
     box-shadow: 0 2px 4px 0 rgba(136, 144, 195, 0.2),
       0 5px 15px 0 rgba(37, 44, 97, 0.15);
@@ -43,7 +42,7 @@
     position: relative;
     z-index: 1;
     overflow: hidden;
-    min-height: 219px;
+    min-height: 112px;
     max-width: 250px;
     transition: 0.7s;
   }
@@ -86,14 +85,14 @@
 
   .solution_card .solu_title h3 {
     color: #212121;
-    font-size: 1rem;
+    font-size: 0.8rem;
     margin-top: 13px;
-    margin-bottom: 13px;
+    margin-bottom: 10px;
   }
 
   .solution_card .solu_description p {
-    font-size: 15px;
-    margin-bottom: 15px;
+    font-size: 12px;
+    margin-bottom: 10px;
   }
 
   .solution_card .solu_description button {
@@ -137,8 +136,8 @@
   }
 
   .solution_cards_box .solution_card .so_top_icon {
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background: #fff;
     overflow: hidden;
@@ -154,7 +153,7 @@
   }
 
   .solution_card {
-    min-width:200px ;
+    min-width:123px ;
   }
 
   /*start media query*/
@@ -181,7 +180,7 @@
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: start;
-      min-width: 80vw;
+      min-width: 50vw;
     }
   }
   @media only screen and (min-width: 1024px) {

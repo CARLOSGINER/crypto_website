@@ -81,7 +81,8 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
     }
 
     const getData =async() =>{
-        const resp:any = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1')
+        // const resp:any = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1')
+        const resp:any = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
         setCoins(resp.data)
     }
 
