@@ -132,7 +132,7 @@ export default function Login({getID,getToken,getFirstTimeUser,getDataBaseCoins}
       <div className={login.loginDiv}>
         <div className={login.logo}></div>
 
-        <div className={login.title}>Crypto App</div>
+        <div className={login.title}>My Stock App</div>
 
         <div className={login.subTitle}>{subtitle}</div>
 
