@@ -2,6 +2,7 @@ import { useState } from "react";
 import SearchIcon from "@material-ui/icons/Search";
 import CloseIcon from "@material-ui/icons/Close";
 import SBstyle from '../styles/searchBar.module.css';
+import axios from 'axios';
 
 function SearchBar(
     { placeholder, data,handleCoinSelection,showDropdown,toogleShowDropdown,toogleRepeated }:
@@ -11,13 +12,32 @@ function SearchBar(
   const [wordEntered, setWordEntered] = useState("");
 
 
-
-  const handleFilter = (event:any) => {
+  const handleFilter = async (event:any) => {
     const searchWord = event.target.value;
     setWordEntered(searchWord);
-    const newFilter = data.filter((value:any) => {
-      return value.name.toLowerCase().includes(searchWord.toLowerCase());
-    });
+
+    const options:any = {
+      method: 'GET',
+      url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/autocomplete',
+      params: {query: searchWord, lang: 'en'},
+      headers: {
+        'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+        'x-rapidapi-key': '31b063a22amsh21c752170e3beeep1f4046jsn4f0ce84b4d68'
+      }
+    };
+
+    const response:any = await axios.request(options)
+
+
+    const newFilter:string[] = response.data.ResultSet.Result.map((each:any)=>{
+      return {
+        name:each.name,
+        symbol:each.symbol
+      }
+    }) 
+
+    console.log(newFilter)
+
     if (searchWord === "") {
       setFilteredData([]);
     } else {
@@ -27,8 +47,6 @@ function SearchBar(
     toogleRepeated();
   };
 
-
-
   const clearInput = () => {
     setFilteredData([]);
     setWordEntered("");
@@ -37,6 +55,7 @@ function SearchBar(
 
 
   return (
+  
     <div className={SBstyle['search']}>
       <div className={SBstyle['searchInputs']}>
         <input 
@@ -55,10 +74,11 @@ function SearchBar(
       </div>
       {(filteredData.length !== 0 && showDropdown) && (
         <div className={SBstyle["dataResult"]}>
-          {filteredData.map((value, index) => {
+          {filteredData.map((stock, index) => {
             return (
-              <div data-value={value.name} key={value.name} className={SBstyle["dataItem"]} onClick={handleCoinSelection}>
-                <p data-value={value.name}>{value.name} </p>
+              <div data-value={stock.symbol} key={index} className={SBstyle["dataItem"]} onClick={handleCoinSelection}>
+                <p data-value={stock.symbol} >{stock.name} </p>
+                <p data-value={stock.symbol} style = {{margin:"0 8px 0 0"}}>{stock.symbol} </p>
               </div>
             );
           })}

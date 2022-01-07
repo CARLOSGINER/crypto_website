@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios';
 import {useEffect,useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -21,7 +21,7 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
     let navigate = useNavigate();
 
     useEffect(()=>{
-        getData();
+        // getData();
         deactivateLoader()
     },[])
 
@@ -43,7 +43,7 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
     const handleCoinSelection = (event:any) =>{
 
         const userSelectedCoin = event.target.dataset.value;
-        console.log(userSelectedCoin)
+        // console.log(userSelectedCoin)
 
         selectedCoins.forEach((each:string)=>{
             if(each===userSelectedCoin){
@@ -63,6 +63,7 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
         setCoinCount(coinCount+1);  
     } 
 
+
     const handleCloseCard = (event:any) => {
         const closeCard = event.currentTarget.attributes['data-value'].value;
         const filteredSelection = selectedCoins.filter((each:string)=>{
@@ -80,11 +81,28 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
         repeated = false
     }
 
-    const getData =async() =>{
-        // const resp:any = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1')
-        const resp:any = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-        setCoins(resp.data)
-    }
+    // const getData =async() =>{
+        // const resp:any = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+        // setCoins(resp.data)
+        // console.log(resp.data)
+
+    //     const options:any = {
+    //     method: 'GET',
+    //     url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/autocomplete',
+    //     params: {query: 'ama', lang: 'en'},
+    //     headers: {
+    //         'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
+    //         'x-rapidapi-key': '31b063a22amsh21c752170e3beeep1f4046jsn4f0ce84b4d68'
+    //     }
+    //     };
+
+    //     axios.request(options).then(function (response) {
+    //         // setCoins(response.data);
+    //         console.log(response.data)
+    //     }).catch(function (error) {
+    //         console.error(error);
+    //     });
+    //  }
 
     const handleLogOut = async () =>{
 

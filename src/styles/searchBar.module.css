@@ -42,8 +42,8 @@ input:focus {
   left:50%;
   transform:translateX(-55%);
   top:4.5em;
-  width: 320px;
-  height: 300px;
+  width: 350px;
+  height: 360px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   overflow: hidden;
@@ -60,6 +60,7 @@ input:focus {
   display: flex;
   align-items: center;
   color: black;
+  justify-content: space-between;
 }
 
 .dataItem:hover{
