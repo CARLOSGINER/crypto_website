@@ -5,8 +5,8 @@ import SBstyle from '../styles/searchBar.module.css';
 import axios from 'axios';
 
 function SearchBar(
-    { placeholder, data,handleCoinSelection,showDropdown,toogleShowDropdown,toogleRepeated }:
-    { placeholder:any,data:any,handleCoinSelection:any,showDropdown:any,toogleShowDropdown:any,toogleRepeated:any}) {
+    { placeholder,handleCoinSelection,showDropdown,toogleShowDropdown,toogleRepeated }:
+    { placeholder:any,handleCoinSelection:any,showDropdown:any,toogleShowDropdown:any,toogleRepeated:any}) {
 
   const [filteredData, setFilteredData] = useState([] as any[]);
   const [wordEntered, setWordEntered] = useState("");

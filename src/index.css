@@ -45,6 +45,10 @@
     min-height: 112px;
     max-width: 250px;
     transition: 0.7s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
   }
 
   .solution_cards_box .solution_card:hover {
@@ -85,7 +89,7 @@
 
   .solution_card .solu_title h3 {
     color: #212121;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     margin-top: 13px;
     margin-bottom: 10px;
   }

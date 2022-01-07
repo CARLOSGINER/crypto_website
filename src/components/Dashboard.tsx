@@ -9,8 +9,7 @@ import SearchBar from './SearchBar';
 
 function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:string,firstTimeUser:boolean,dataBaseCoins:any}) {
 
-    const [coins, setCoins] = useState([]);
-    const [searchPlaceholder, setSearchPlaceholder] = useState('Select up to eigth coins');
+    const [searchPlaceholder, setSearchPlaceholder] = useState('Search for stock here');
     const [selectedCoins, setSelectedCoins] = useState<string[]>(dataBaseCoins); //el estado inicial es proveido por el fetch a /getone desde servidor
     const [loaderStyle, setLoaderStyle] = useState({});
     const [showDropdown, setShowDropdown] = useState<boolean>(true);
@@ -21,7 +20,6 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
     let navigate = useNavigate();
 
     useEffect(()=>{
-        // getData();
         deactivateLoader()
     },[])
 
@@ -43,7 +41,6 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
     const handleCoinSelection = (event:any) =>{
 
         const userSelectedCoin = event.target.dataset.value;
-        // console.log(userSelectedCoin)
 
         selectedCoins.forEach((each:string)=>{
             if(each===userSelectedCoin){
@@ -73,6 +70,10 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
         setCoinCount(coinCount-1);
     }
 
+    useEffect(()=>{
+        console.log(selectedCoins)
+    },[selectedCoins])
+
     const toogleShowDropdown = () =>{
         setShowDropdown(true);
     }
@@ -81,28 +82,6 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
         repeated = false
     }
 
-    // const getData =async() =>{
-        // const resp:any = await axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-        // setCoins(resp.data)
-        // console.log(resp.data)
-
-    //     const options:any = {
-    //     method: 'GET',
-    //     url: 'https://stock-data-yahoo-finance-alternative.p.rapidapi.com/v6/finance/autocomplete',
-    //     params: {query: 'ama', lang: 'en'},
-    //     headers: {
-    //         'x-rapidapi-host': 'stock-data-yahoo-finance-alternative.p.rapidapi.com',
-    //         'x-rapidapi-key': '31b063a22amsh21c752170e3beeep1f4046jsn4f0ce84b4d68'
-    //     }
-    //     };
-
-    //     axios.request(options).then(function (response) {
-    //         // setCoins(response.data);
-    //         console.log(response.data)
-    //     }).catch(function (error) {
-    //         console.error(error);
-    //     });
-    //  }
 
     const handleLogOut = async () =>{
 
@@ -135,7 +114,7 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
                      })
             })
             }
-            navigate('/crypto_website')
+            navigate('/login')
 
         }catch(error){
             console.log(error)
@@ -145,7 +124,6 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
      
     return (
     <>  
-        {console.log(selectedCoins)}
 
         <div className={tss["loaderBg"]} style={loaderStyle}>
             <div className={tss["loader"]} >
@@ -163,7 +141,6 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
         <div style={preDashboardStyle}>
             <button onClick={handleLogOut} className={tss.logout}>Log Out</button>
             <SearchBar  
-                data={coins} 
                 handleCoinSelection={handleCoinSelection}  
                 placeholder={searchPlaceholder}
                 showDropdown={showDropdown}
@@ -173,7 +150,6 @@ function Dashboard({id,token,firstTimeUser,dataBaseCoins}:{id:string,token:strin
             <CoinCards 
                 handleCloseCard={handleCloseCard} 
                 coinCount={coinCount} 
-                coins={coins} 
                 selectedCoins={selectedCoins}
                 />
             </div>
