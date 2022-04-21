@@ -1,26 +1,34 @@
-**CRYPTO APP** 
+💰**CRYPTO APP** 
 
-Data from CoinGecko, Login with authentication, and dashboard
+Data from CoinGecko rest API, Login with authentication.
 
 ___________________________________________________________________________________________________________________________________________________________________________________
 
-*Proyecto* /:octocat: [Visit Webpage Here!](http://CARLOSGINER.github.io/crypto_website)
+*Prototype for client* /:octocat: [Visit Webpage Here!](http://CARLOSGINER.github.io/crypto_website)
 
-**AUTOR**
+For testing Login with: 
+
+**User**: test
+
+**Password**: test123
+
+Or feel free to create your own user (not email subscription or newsletter of any kind working)
+
+
+
+**AUTHOR**
 
 > Carlos Giner 
 
-**TECNOLOGÍAS APLICADAS**
+**TECHNOLOGIES APPLIED**
 
 - [x] React.js / Typescript
 - [x] CSS modules / Bootstrap
 
 
-**PENDIENTES**
+**TO DO**
 
-> CSS modificar tamaño de cartas coin.  
-
-> Hover de logOut.
+> All working
 
 
 __________________________________________________________________________________________________________________________________________________________________________________
